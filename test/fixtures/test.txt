@@ -1,0 +1,28 @@
+basic italics and bold
+.
+text with both *italic* and **bold** or _italic_ and __bold__
+.
+<p>text with both <em>italic</em> and <strong>bold</strong> or <em>italic</em> and <strong>bold</strong></p>
+.
+
+compositional italics and bold with extra whitespace
+.
+text with ** bold and * italic * text **
+.
+<p>text with <strong> bold and <em> italic </em> text </strong></p>
+.
+
+a complicated case
+.
+normal *italic **bold and italic  ** just italic ** more bold and italic text** just italic * and back to normal 
+.
+<p>normal <em>italic <strong>bold and italic  </strong> just italic <strong> more bold and italic text</strong> just italic </em> and back to normal</p>
+.
+
+
+a more complicated case with alternate tokens
+.
+normal *italic __bold and italic  __ just italic __ more bold and italic text__ just italic * and back to normal 
+.
+<p>normal <em>italic <strong>bold and italic  </strong> just italic <strong> more bold and italic text</strong> just italic </em> and back to normal</p>
+.
