@@ -26,3 +26,12 @@ normal *italic __bold and italic  __ just italic __ more bold and italic text__ 
 .
 <p>normal <em>italic <strong>bold and italic  </strong> just italic <strong> more bold and italic text</strong> just italic </em> and back to normal</p>
 .
+
+unmatched token is reset on every new line
+.
+unmatched **bold in line has _italicized text_
+next line should reset so that only **this is bold in the output**
+.
+<p>unmatched **bold in line has <em>italicized text</em>
+next line should reset so that only <strong>this is bold in the output</strong></p>
+.
