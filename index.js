@@ -139,5 +139,6 @@ module.exports = function emphasis_alt(md) {
     md.disable('emphasis');
     md.inline.ruler.before('emphasis', 'emphasis_alt', tokenize);
     md.inline.ruler2.before('emphasis', 'emphasis_alt', postProcess);
+    initialized = true;
   }
 };
