@@ -41,3 +41,10 @@ here is a file_name_with_underscores.txt that should not be mucked with.
 .
 <p>here is a file_name_with_underscores.txt that should not be mucked with.</p>
 .
+
+Bold and italic
+.
+_**bold and italic**_
+.
+<p><em><strong>bold and italic</strong></em></p>
+.

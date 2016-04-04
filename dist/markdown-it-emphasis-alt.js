@@ -17,7 +17,7 @@ function reset(_newlinePos) {
   }
 }
 // Zs (unicode class) || [\t\f\v\r\n]
-function isWhiteSpace(code) {
+function isWhiteSpaceOrMarker(code) {
   if (code >= 0x2000 && code <= 0x200A) { return true; }
   switch (code) {
     case 0x09: // \t
@@ -31,6 +31,8 @@ function isWhiteSpace(code) {
     case 0x202F:
     case 0x205F:
     case 0x3000:
+    case 0x5F:
+    case 0x2A:
       return true;
   }
   return false;
@@ -48,8 +50,8 @@ function tokenize(state, silent) {
   lastChar = start > 0 ? state.src.charCodeAt(start - 1) : 0x20;
   nextChar = state.pos + 1 < state.posMax ? state.src.charCodeAt(state.pos + 1) : 0x20;
 
-  if (!(isWhiteSpace(lastChar) || lastChar === marker) &&
-      !(isWhiteSpace(nextChar) || nextChar === marker)) {
+  if (!(isWhiteSpaceOrMarker(lastChar)) &&
+      !(isWhiteSpaceOrMarker(nextChar))) {
     // this could be a filename
     return false;
   }
