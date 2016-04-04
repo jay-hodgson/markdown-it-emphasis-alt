@@ -19,7 +19,6 @@ normal *italic **bold and italic  ** just italic ** more bold and italic text** 
 <p>normal <em>italic <strong>bold and italic  </strong> just italic <strong> more bold and italic text</strong> just italic </em> and back to normal</p>
 .
 
-
 a more complicated case with alternate tokens
 .
 normal *italic __bold and italic  __ just italic __ more bold and italic text__ just italic * and back to normal 
@@ -34,4 +33,11 @@ next line should reset so that only **this is bold in the output**
 .
 <p>unmatched **bold in line has <em>italicized text</em>
 next line should reset so that only <strong>this is bold in the output</strong></p>
+.
+
+filename with underscores
+.
+here is a file_name_with_underscores.txt that should not be mucked with.
+.
+<p>here is a file_name_with_underscores.txt that should not be mucked with.</p>
 .
