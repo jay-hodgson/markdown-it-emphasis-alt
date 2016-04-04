@@ -6,6 +6,8 @@ var isSingleOpen;
 var isDoubleOpen;
 var newlinePos;
 var initialized = false;
+var WORD_CHAR_TEST_RE = /[a-zA-Z0-9]/;
+
 function reset(_newlinePos) {
   isSingleOpen = false;
   isDoubleOpen = false;
@@ -15,27 +17,7 @@ function reset(_newlinePos) {
     newlinePos = 0;
   }
 }
-// Zs (unicode class) || [\t\f\v\r\n]
-function isWhiteSpaceOrMarker(code) {
-  if (code >= 0x2000 && code <= 0x200A) { return true; }
-  switch (code) {
-    case 0x09: // \t
-    case 0x0A: // \n
-    case 0x0B: // \v
-    case 0x0C: // \f
-    case 0x0D: // \r
-    case 0x20:
-    case 0xA0:
-    case 0x1680:
-    case 0x202F:
-    case 0x205F:
-    case 0x3000:
-    case 0x5F:
-    case 0x2A:
-      return true;
-  }
-  return false;
-}
+
 function tokenize(state, silent) {
   var token,
     lastChar, nextChar,
@@ -46,11 +28,11 @@ function tokenize(state, silent) {
   if (silent) { return false; }
 
   if (marker !== 0x5F /* _ */ && marker !== 0x2A /* * */) { return false; }
-  lastChar = start > 0 ? state.src.charCodeAt(start - 1) : 0x20;
-  nextChar = state.pos + 1 < state.posMax ? state.src.charCodeAt(state.pos + 1) : 0x20;
+  lastChar = start > 0 ? String.fromCharCode(state.src.charCodeAt(start - 1)) : ' ';
+  nextChar = state.pos + 1 < state.posMax ? String.fromCharCode(state.src.charCodeAt(state.pos + 1)) : ' ';
 
-  if (!(isWhiteSpaceOrMarker(lastChar)) &&
-      !(isWhiteSpaceOrMarker(nextChar))) {
+  if (WORD_CHAR_TEST_RE.test(lastChar) &&
+      WORD_CHAR_TEST_RE.test(nextChar)) {
     // this could be a filename
     return false;
   }
