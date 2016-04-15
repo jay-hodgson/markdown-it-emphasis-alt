@@ -31,7 +31,8 @@ function tokenize(state, silent) {
   lastChar = start > 0 ? String.fromCharCode(state.src.charCodeAt(start - 1)) : ' ';
   nextChar = state.pos + 1 < state.posMax ? String.fromCharCode(state.src.charCodeAt(state.pos + 1)) : ' ';
 
-  if (WORD_CHAR_TEST_RE.test(lastChar) &&
+  if (marker === 0x5F /* _ */ &&
+      WORD_CHAR_TEST_RE.test(lastChar) &&
       WORD_CHAR_TEST_RE.test(nextChar)) {
     // this could be a filename
     return false;

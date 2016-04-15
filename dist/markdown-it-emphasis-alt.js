@@ -1,4 +1,4 @@
-/*! markdown-it-emphasis-alt 1.0.5 https://github.com/jay-hodgson/markdown-it-emphasis-alt @license MIT */(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.markdownitEmphasisAlt = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+/*! markdown-it-emphasis-alt 1.0.7 https://github.com/jay-hodgson/markdown-it-emphasis-alt @license MIT */(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.markdownitEmphasisAlt = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 // Process emphasis
 
 'use strict';
@@ -32,7 +32,8 @@ function tokenize(state, silent) {
   lastChar = start > 0 ? String.fromCharCode(state.src.charCodeAt(start - 1)) : ' ';
   nextChar = state.pos + 1 < state.posMax ? String.fromCharCode(state.src.charCodeAt(state.pos + 1)) : ' ';
 
-  if (WORD_CHAR_TEST_RE.test(lastChar) &&
+  if (marker === 0x5F /* _ */ &&
+      WORD_CHAR_TEST_RE.test(lastChar) &&
       WORD_CHAR_TEST_RE.test(nextChar)) {
     // this could be a filename
     return false;

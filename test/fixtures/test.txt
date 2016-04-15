@@ -48,3 +48,10 @@ _**bold and italic**_
 .
 <p><em><strong>bold and italic</strong></em></p>
 .
+
+Broken case of bold and italic
+.
+__clear*Science*__
+.
+<p><strong>clear<em>Science</em></strong></p>
+.
