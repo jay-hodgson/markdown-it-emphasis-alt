@@ -55,3 +55,13 @@ __clear*Science*__
 .
 <p><strong>clear<em>Science</em></strong></p>
 .
+
+Unclosed marker should not mess up the rest of the document
+.
+**This unclosed bold messes up the rest of the page?!
+
+**This should be bold in a heading**
+.
+<p>**This unclosed bold messes up the rest of the page?!</p>
+<p><strong>This should be bold in a heading</strong></p>
+.

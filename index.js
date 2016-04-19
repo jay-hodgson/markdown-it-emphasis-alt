@@ -5,10 +5,11 @@
 var isSingleOpen;
 var isDoubleOpen;
 var newlinePos;
+var newlinePosSrc;
 var initialized = false;
 var WORD_CHAR_TEST_RE = /[a-zA-Z0-9]/;
 
-function reset(_newlinePos) {
+function reset(_newSrc, _newlinePos) {
   isSingleOpen = false;
   isDoubleOpen = false;
   if (_newlinePos) {
@@ -16,6 +17,7 @@ function reset(_newlinePos) {
   } else {
     newlinePos = 0;
   }
+  newlinePosSrc = _newSrc;
 }
 
 function tokenize(state, silent) {
@@ -49,8 +51,8 @@ function tokenize(state, silent) {
     }
     nextNewlinePos++;
   }
-  if (nextNewlinePos > newlinePos) {
-    reset(nextNewlinePos);
+  if (state.src !== newlinePosSrc || nextNewlinePos > newlinePos) {
+    reset(state.src, nextNewlinePos);
   }
 
   token         = state.push('text', '', 0);
